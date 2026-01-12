@@ -1,0 +1,102 @@
+/* Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "tw-animate-css";
+
+/* Dark variant helper */
+@custom-variant dark (&:is(.dark *));
+
+/* Cybersecurity dark theme variables */
+:root {
+  --background: oklch(0.13 0.01 240);
+  --foreground: oklch(0.92 0.01 240);
+  --card: oklch(0.16 0.01 240);
+  --card-foreground: oklch(0.92 0.01 240);
+  --popover: oklch(0.16 0.01 240);
+  --popover-foreground: oklch(0.92 0.01 240);
+  --primary: oklch(0.75 0.15 180);
+  --primary-foreground: oklch(0.13 0.01 240);
+  --secondary: oklch(0.22 0.02 240);
+  --secondary-foreground: oklch(0.92 0.01 240);
+  --muted: oklch(0.22 0.02 240);
+  --muted-foreground: oklch(0.65 0.02 240);
+  --accent: oklch(0.65 0.18 145);
+  --accent-foreground: oklch(0.13 0.01 240);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.92 0.01 240);
+  --border: oklch(0.28 0.02 240);
+  --input: oklch(0.2 0.02 240);
+  --ring: oklch(0.75 0.15 180);
+  --radius: 0.5rem;
+  --sidebar: oklch(0.14 0.01 240);
+  --sidebar-foreground: oklch(0.92 0.01 240);
+  --sidebar-primary: oklch(0.75 0.15 180);
+  --sidebar-primary-foreground: oklch(0.13 0.01 240);
+  --sidebar-accent: oklch(0.22 0.02 240);
+  --sidebar-accent-foreground: oklch(0.92 0.01 240);
+  --sidebar-border: oklch(0.28 0.02 240);
+  --sidebar-ring: oklch(0.75 0.15 180);
+}
+
+/* Dark theme overrides */
+.dark {
+  --background: oklch(0.13 0.01 240);
+  --foreground: oklch(0.92 0.01 240);
+  --card: oklch(0.16 0.01 240);
+  --card-foreground: oklch(0.92 0.01 240);
+  --popover: oklch(0.16 0.01 240);
+  --popover-foreground: oklch(0.92 0.01 240);
+  --primary: oklch(0.75 0.15 180);
+  --primary-foreground: oklch(0.13 0.01 240);
+  --secondary: oklch(0.22 0.02 240);
+  --secondary-foreground: oklch(0.92 0.01 240);
+  --muted: oklch(0.22 0.02 240);
+  --muted-foreground: oklch(0.65 0.02 240);
+  --accent: oklch(0.65 0.18 145);
+  --accent-foreground: oklch(0.13 0.01 240);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.92 0.01 240);
+  --border: oklch(0.28 0.02 240);
+  --input: oklch(0.2 0.02 240);
+  --ring: oklch(0.75 0.15 180);
+  --sidebar: oklch(0.14 0.01 240);
+  --sidebar-foreground: oklch(0.92 0.01 240);
+  --sidebar-primary: oklch(0.75 0.15 180);
+  --sidebar-primary-foreground: oklch(0.13 0.01 240);
+  --sidebar-accent: oklch(0.22 0.02 240);
+  --sidebar-accent-foreground: oklch(0.92 0.01 240);
+  --sidebar-border: oklch(0.28 0.02 240);
+  --sidebar-ring: oklch(0.75 0.15 180);
+}
+
+/* Global base styles */
+@layer base {
+  * { @apply border border-gray-700 outline-none; }
+  body { @apply bg-background text-foreground font-sans antialiased; }
+}
+
+/* Terminal glow, scanlines, cursor blink */
+.glow-cyan { box-shadow: 0 0 20px oklch(0.75 0.15 180 / 0.3); }
+.glow-green { box-shadow: 0 0 20px oklch(0.65 0.18 145 / 0.3); }
+.text-glow { text-shadow: 0 0 10px currentColor; }
+
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    oklch(0 0 0 / 0.03) 2px,
+    oklch(0 0 0 / 0.03) 4px
+  );
+  pointer-events: none;
+}
+
+@keyframes blink {
+  0%,50% { opacity: 1; } 51%,100% { opacity: 0; }
+}
+.cursor-blink { animation: blink 1s infinite; }
